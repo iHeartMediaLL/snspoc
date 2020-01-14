@@ -6,6 +6,7 @@ import com.amazonaws.regions.Regions;
 import com.amazonaws.services.sns.AmazonSNS;
 import com.amazonaws.services.sns.AmazonSNSClientBuilder;
 import com.amazonaws.services.sns.model.SubscribeRequest;
+import com.iheartmedia.dlct.snspoc.models.SimpleModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.aws.messaging.core.NotificationMessagingTemplate;
@@ -36,7 +37,7 @@ public class SNSMessageSender {
         notificationMessagingTemplate = new NotificationMessagingTemplate(sns);
     }
 
-    public void sendMessage(String message, String subject) {
+    public void sendMessage(SimpleModel message, String subject) {
         notificationMessagingTemplate.sendNotification(topicName, message, subject);
     }
 
